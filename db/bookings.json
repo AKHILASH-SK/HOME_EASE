@@ -1,0 +1,165 @@
+[
+  {
+    "id": "HE-6181",
+    "createdAt": "2026-09-06T15:04:29.352Z",
+    "customer": {
+      "name": "Akhilash S",
+      "phone": "9842100801",
+      "email": "akhilash@gmail.com",
+      "address": "KPR College Campus, Arasur",
+      "city": "Coimbatore",
+      "pincode": "641407"
+    },
+    "service": {
+      "id": "srv-ac",
+      "name": "Air Conditioner Repair & Servicing",
+      "category": "AC Service"
+    },
+    "subServices": [
+      "Jet-Pump Deep Servicing (Split/Window)"
+    ],
+    "technician": {
+      "id": "tech-ac-1",
+      "name": "V. Vignesh",
+      "phone": "+91 99441-55092",
+      "role": "HVAC & Inverter AC Specialist",
+      "rating": 4.9
+    },
+    "schedule": {
+      "date": "2026-09-09",
+      "timeSlot": "11:00 AM - 01:00 PM"
+    },
+    "pricing": {
+      "basePrice": 499,
+      "addOnsTotal": 149,
+      "tax": 117,
+      "totalAmount": 765
+    },
+    "paymentMethod": "UPI / Card after Service",
+    "specialNotes": "Front lab faculty room AC cooling check.",
+    "status": "Cancelled",
+    "cancelledAt": "2026-09-06T15:04:45.752Z"
+  },
+  {
+    "id": "HE-8021",
+    "createdAt": "2026-09-05T10:30:00.000Z",
+    "customer": {
+      "name": "Dr. Ananya Lakshmi",
+      "phone": "9842177650",
+      "email": "ananya.lakshmi@gmail.com",
+      "address": "Flat 3B, Mayflower Apartments, Avinashi Road",
+      "city": "Coimbatore",
+      "pincode": "641004"
+    },
+    "service": {
+      "id": "srv-ac",
+      "name": "Air Conditioner Repair & Servicing",
+      "category": "AC Service"
+    },
+    "subServices": [
+      "Jet-Pump Deep Servicing (Split/Window)",
+      "Anti-Bacterial Foam Jet Shield"
+    ],
+    "technician": {
+      "id": "tech-ac-1",
+      "name": "V. Vignesh",
+      "phone": "+91 99441-55092",
+      "role": "HVAC & Inverter AC Specialist",
+      "rating": 4.9
+    },
+    "schedule": {
+      "date": "2026-09-08",
+      "timeSlot": "10:00 AM - 12:00 PM"
+    },
+    "pricing": {
+      "basePrice": 499,
+      "addOnsTotal": 149,
+      "tax": 117,
+      "totalAmount": 765
+    },
+    "paymentMethod": "UPI / Card after Service",
+    "specialNotes": "Please carry an outdoor unit ladder.",
+    "status": "Confirmed"
+  },
+  {
+    "id": "HE-7945",
+    "createdAt": "2026-09-04T14:15:00.000Z",
+    "customer": {
+      "name": "Karthik Sundaram",
+      "phone": "9443218820",
+      "email": "karthik.sundar@outlook.com",
+      "address": "14/2, Thillai Nagar, Gandhi Park",
+      "city": "Coimbatore",
+      "pincode": "641001"
+    },
+    "service": {
+      "id": "srv-plumbing",
+      "name": "Plumbing & Drainage Solutions",
+      "category": "Plumbing"
+    },
+    "subServices": [
+      "Tap / Faucet Replacement or Leak Fix"
+    ],
+    "technician": {
+      "id": "tech-plumb-1",
+      "name": "M. Murugan",
+      "phone": "+91 98940-11283",
+      "role": "Senior Plumbing Engineer",
+      "rating": 4.9
+    },
+    "schedule": {
+      "date": "2026-09-07",
+      "timeSlot": "02:00 PM - 04:00 PM"
+    },
+    "pricing": {
+      "basePrice": 349,
+      "addOnsTotal": 99,
+      "tax": 81,
+      "totalAmount": 529
+    },
+    "paymentMethod": "Cash on Delivery",
+    "specialNotes": "Main kitchen sink mixer tap is dripping constantly.",
+    "status": "In Progress"
+  },
+  {
+    "id": "HE-7812",
+    "createdAt": "2026-09-02T09:00:00.000Z",
+    "customer": {
+      "name": "Priya Rajesh",
+      "phone": "9789234110",
+      "email": "priya.rajesh@gmail.com",
+      "address": "Plot 88, Green Meadows, Saravanampatti",
+      "city": "Coimbatore",
+      "pincode": "641035"
+    },
+    "service": {
+      "id": "srv-electrical",
+      "name": "Electrical Repairs & Installation",
+      "category": "Electrical"
+    },
+    "subServices": [
+      "Switchboard & Socket Repair",
+      "MCB / Fuse Tripping Fix"
+    ],
+    "technician": {
+      "id": "tech-elec-1",
+      "name": "R. Suresh Kumar",
+      "phone": "+91 98421-33104",
+      "role": "Master Electrician",
+      "rating": 4.9
+    },
+    "schedule": {
+      "date": "2026-09-03",
+      "timeSlot": "11:00 AM - 01:00 PM"
+    },
+    "pricing": {
+      "basePrice": 299,
+      "addOnsTotal": 149,
+      "tax": 81,
+      "totalAmount": 529
+    },
+    "paymentMethod": "UPI / Card after Service",
+    "specialNotes": "Bedroom power sockets keep tripping inverter.",
+    "status": "Completed"
+  }
+]

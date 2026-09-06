@@ -1,0 +1,23 @@
+{
+  "name": "home-service-appointment-booking",
+  "version": "1.0.0",
+  "description": "HomeEase - Home Service Appointment Booking Web Application with Node.js and JSON file-system storage",
+  "main": "be/server.js",
+  "scripts": {
+    "start": "node be/server.js",
+    "dev": "node be/server.js"
+  },
+  "keywords": [
+    "home-services",
+    "appointment-booking",
+    "nodejs",
+    "vanilla-js",
+    "html5",
+    "css3"
+  ],
+  "author": "Akhilash S",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}

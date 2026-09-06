@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeEase — Professional Home Service Appointment Booking</title>
+  <meta name="description" content="HomeEase connects homeowners with verified electricians, master plumbers, AC repair specialists, and cleaning crews with transparent pricing.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==============================================================================
+       1. HEADER & ADAPTIVE NAVIGATION BAR
+       ============================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="HomeEase Home">
+        <span class="brand-icon">🛠️</span>
+        <span>Home<span class="brand-highlight">Ease</span></span>
+      </a>
+
+      <!-- Authenticated Navigation (Only visible after customer logs in) -->
+      <nav id="authNav" aria-label="Customer Navigation" style="display: none;">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Dashboard</a></li>
+          <li><a href="#servicesCatalog" class="nav-link">Services</a></li>
+          <li><a href="#pricingTableSection" class="nav-link">Price Card</a></li>
+          <li><a href="book.html" class="nav-link">Book Appointment</a></li>
+          <li><a href="appointments.html" class="nav-link">My Bookings</a></li>
+        </ul>
+      </nav>
+
+      <!-- Guest Actions (Before login: Sign In & Create Account only) -->
+      <div class="header-actions" id="guestNavActions">
+        <button class="btn btn-secondary btn-sm" onclick="openAuthModal('login')">Sign In</button>
+        <button class="btn btn-primary btn-sm" onclick="openAuthModal('register')">Create Account</button>
+      </div>
+
+      <!-- Authenticated Actions (After login: User Greeting & Sign Out) -->
+      <div class="header-actions" id="userNavActions" style="display: none;">
+        <div class="user-status-badge">
+          <span>👤</span>
+          <span id="userNameBadge">Akhilash S</span>
+        </div>
+        <a href="book.html" class="btn btn-primary btn-sm">+ Book Service</a>
+        <button class="btn btn-secondary btn-sm" onclick="handleLogout()">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==============================================================================
+         VIEW 1: GUEST LANDING PAGE (Public View - Before Login)
+         Corporate presentation about our business, standards, guarantees, FAQs.
+         NO individual service booking cards are shown here.
+         ============================================================================== -->
+    <div id="guestView">
+      <!-- Hero Section -->
+      <section class="guest-hero">
+        <div class="container guest-hero-grid">
+          <div class="guest-hero-content">
+            <div class="hero-pill">
+              <span>🛡️</span>
+              <span>Certified Technical Care for Modern Homes</span>
+            </div>
+            <h1 class="guest-hero-title">
+              Doorstep Technical Care, <br>
+              <span class="brand-highlight">Standardized &amp; Verified.</span>
+            </h1>
+            <p class="guest-hero-desc">
+              HomeEase brings institutional quality, safety, and transparency to residential maintenance. We connect homeowners across Coimbatore &amp; Chennai with certified electricians, master plumbers, HVAC specialists, and deep cleaning professionals.
+            </p>
+            <div class="guest-hero-ctas">
+              <button class="btn btn-primary btn-lg" onclick="openAuthModal('register')">Get Started ➜</button>
+              <a href="#aboutSection" class="btn btn-secondary btn-lg">Why HomeEase?</a>
+            </div>
+
+            <!-- Trust Metrics -->
+            <div class="hero-stats-row">
+              <div class="hero-stat">
+                <h4>15,000+</h4>
+                <p>Jobs Delivered</p>
+              </div>
+              <div class="hero-stat">
+                <h4>4.9 ★</h4>
+                <p>Average Rating</p>
+              </div>
+              <div class="hero-stat">
+                <h4>100%</h4>
+                <p>Vetted Technicians</p>
+              </div>
+              <div class="hero-stat">
+                <h4>30 Days</h4>
+                <p>Rework Warranty</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Spotlight Visual -->
+          <div class="hero-feature-card">
+            <img src="assets/images/service-electrical.jpg" alt="HomeEase Professional Technician">
+            <div class="hero-feature-card-body">
+              <h3>The HomeEase Quality Standard</h3>
+              <p>Sign in with your customer account to access verified local technician profiles, transparent rate cards, and flexible arrival slots.</p>
+              <button class="btn btn-primary btn-sm" style="width: 100%;" onclick="openAuthModal('login')">
+                Sign In to View Availability ➜
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Why We Built HomeEase (The Story & Problem Solved) -->
+      <section class="section" id="aboutSection">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">About Our Mission</div>
+            <h2 class="section-title">Solving Unorganized Home Maintenance</h2>
+            <p class="section-desc">Traditional home service booking is fragmented, with uncertain quotes, unverified technicians, and zero accountability when issues reoccur.</p>
+          </div>
+
+          <div class="story-grid">
+            <div class="story-card">
+              <div class="story-icon">⚠️</div>
+              <h3>The Traditional Problem</h3>
+              <p>Homeowners often struggle with unvetted independent contractors, inflated emergency quotes, delayed arrivals, and recurring leaks or electrical shorts with no warranty.</p>
+            </div>
+            <div class="story-card">
+              <div class="story-icon">⚡</div>
+              <h3>The HomeEase Solution</h3>
+              <p>We establish a trusted digital platform with standardized pricing, pre-screened technical experts, real-time arrival slot reservations, and institutional rework coverage.</p>
+            </div>
+            <div class="story-card">
+              <div class="story-icon">🛡️</div>
+              <h3>Complete Peace of Mind</h3>
+              <p>Every technician carries verified photo ID, uses genuine manufacturer parts, and follows strict safety protocols. If a repair fails, we revisit and fix it free within 30 days.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: The HomeEase 6 Quality Guarantees -->
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Institutional Trust</div>
+            <h2 class="section-title">Our 6 Quality &amp; Safety Commitments</h2>
+            <p class="section-desc">We operate under a strict code of technical excellence and customer safety.</p>
+          </div>
+
+          <div class="guarantee-grid">
+            <div class="guarantee-card">
+              <div class="guarantee-icon">👮</div>
+              <h3>Police &amp; ID Verification</h3>
+              <p>Every technician undergoes background checks, address authentication, and criminal record screening before visiting customer homes.</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="guarantee-icon">⏱️</div>
+              <h3>Guaranteed 2-Hour Arrival</h3>
+              <p>Choose an arrival window that fits your schedule. Our dispatch system ensures punctuality so you never wait around all day.</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="guarantee-icon">💰</div>
+              <h3>Upfront Standardized Rates</h3>
+              <p>Clear diagnostic visit fees and itemized add-on costs calculated live before booking. Never experience surprise quotes on doorstep.</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="guarantee-icon">🔧</div>
+              <h3>Genuine OEM Spare Parts</h3>
+              <p>Our technicians use only certified manufacturer-approved components with a 60-day spare parts warranty on all replacements.</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="guarantee-icon">🌿</div>
+              <h3>Eco-Friendly &amp; Safe Agents</h3>
+              <p>From deep home sanitization to AC foam jet cleaning, we use hospital-grade, non-toxic chemicals safe for children and pets.</p>
+            </div>
+
+            <div class="guarantee-card">
+              <div class="guarantee-icon">🔄</div>
+              <h3>30-Day Free Rework Policy</h3>
+              <p>If any serviced plumbing, electrical, or appliance component gives trouble within 30 days, we revisit and resolve it completely free.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: How HomeEase Works in 4 Steps -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Simple &amp; Predictable</div>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-desc">Experience seamless appointment scheduling with certified technicians.</p>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-step">
+              <div class="step-num">1</div>
+              <h3 class="step-title">Create Account</h3>
+              <p class="step-desc">Sign in with your email or mobile to access our live catalog and verified technician roster.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-num">2</div>
+              <h3 class="step-title">Select Service &amp; Pro</h3>
+              <p class="step-desc">Pick your repair requirements and choose a specific specialist or opt for instant auto-assignment.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-num">3</div>
+              <h3 class="step-title">Lock Time Slot</h3>
+              <p class="step-desc">Choose a guaranteed 2-hour arrival window that fits your daily schedule.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-num">4</div>
+              <h3 class="step-title">Doorstep Resolution</h3>
+              <p class="step-desc">Your pro arrives equipped. Inspect the completed job and pay securely via Cash or UPI.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Verified Customer Testimonials -->
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Customer Experiences</div>
+            <h2 class="section-title">Trusted by Thousands of Families</h2>
+            <p class="section-desc">Read how HomeEase delivers reliable doorstep solutions across Coimbatore.</p>
+          </div>
+
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">"Had a complete MCB tripping fault on a Sunday evening. The electrician Suresh arrived right on schedule, traced the burnt wire within 20 minutes, and replaced the breaker safely. Transparent and polite."</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Dr. Ananya Lakshmi" class="author-avatar">
+                <div>
+                  <div class="author-name">Dr. Ananya Lakshmi</div>
+                  <div class="author-location">Avinashi Road, Coimbatore</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">"Our split AC wasn't cooling during peak summer heat. Vignesh from HomeEase did a thorough jet-pump cleaning and gas top-up. The room chilled in 5 minutes. The 60-day cooling warranty gives total confidence."</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Karthik Sundaram" class="author-avatar">
+                <div>
+                  <div class="author-name">Karthik Sundaram</div>
+                  <div class="author-location">Peelamedu, Coimbatore</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">"Booked kitchen deep sanitization and pipe fixture repair. The team was equipped with industrial steamers and eco-safe agents. Sparkled like new. No advance payment, paid via GPay after inspection."</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="Priya Rajesh" class="author-avatar">
+                <div>
+                  <div class="author-name">Priya Rajesh</div>
+                  <div class="author-location">Saravanampatti, Coimbatore</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Frequently Asked Questions (FAQ) -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Have Questions?</div>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-desc">Everything you need to know about our home service appointment system.</p>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-card">
+              <h3><span>❓</span> How are your technicians verified?</h3>
+              <p>Every technician undergoes a 3-tier screening process: police verification, trade certificate licensing check, and a hands-on technical diagnostic assessment before being inducted.</p>
+            </div>
+
+            <div class="faq-card">
+              <h3><span>❓</span> Do I need to pay in advance?</h3>
+              <p>No. HomeEase does not charge advance fees for standard appointments. You inspect the completed repair and pay the technician directly via Cash or UPI on your doorstep.</p>
+            </div>
+
+            <div class="faq-card">
+              <h3><span>❓</span> What if the problem happens again?</h3>
+              <p>All completed repairs are covered under our 30-Day Free Rework Guarantee. If the same issue reoccurs, our technician revisits and rectifies it without any visit charges.</p>
+            </div>
+
+            <div class="faq-card">
+              <h3><span>❓</span> Which cities and zones do you cover?</h3>
+              <p>We currently offer complete coverage across Coimbatore (RS Puram, Peelamedu, Gandhipuram, Saravanampatti, etc.), Chennai, and Bangalore.</p>
+            </div>
+          </div>
+
+          <!-- Bottom Call to Action Banner -->
+          <div class="guest-cta-banner">
+            <h2>Ready for Effortless Home Maintenance?</h2>
+            <p>Join over 15,000 satisfied homeowners. Create your account or sign in to explore technician availability and schedule your first visit.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+              <button class="btn btn-primary btn-lg" onclick="openAuthModal('register')">Create Free Account ➜</button>
+              <button class="btn btn-secondary btn-lg" style="color: var(--white); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" onclick="openAuthModal('login')">Sign In</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==============================================================================
+         VIEW 2: AUTHENTICATED CUSTOMER PORTAL (Dashboard Feed - Shown After Login)
+         THIS is where the actual service booking cards, KPI metrics, and direct
+         booking options live!
+         ============================================================================== -->
+    <div id="authView" style="display: none;">
+      <section class="portal-hero">
+        <div class="container">
+          <!-- Welcome Greeting Row -->
+          <div class="portal-welcome-row">
+            <div class="portal-greeting">
+              <h1 id="welcomeGreeting">Good day, Akhilash S 👋</h1>
+              <p>Manage your active home service bookings or schedule a new technician visit.</p>
+            </div>
+
+            <div style="display: flex; gap: 0.85rem;">
+              <a href="book.html" class="btn btn-primary">⚡ Book New Appointment</a>
+              <a href="appointments.html" class="btn btn-secondary">📋 My Bookings (<span id="userActiveBookingsCount">0</span>)</a>
+            </div>
+          </div>
+
+          <!-- KPI Metric Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-primary">📅</div>
+              <div>
+                <div class="kpi-value" id="dashActiveCount">0</div>
+                <div class="kpi-label">Active Bookings</div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-success">✅</div>
+              <div>
+                <div class="kpi-value" id="dashCompletedCount">0</div>
+                <div class="kpi-label">Completed Jobs</div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-accent">🛡️</div>
+              <div>
+                <div class="kpi-value">30 Days</div>
+                <div class="kpi-label">Warranty Active</div>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-info">📞</div>
+              <div>
+                <div class="kpi-value" style="font-size: 1.15rem; font-weight: 700;">1800-419</div>
+                <div class="kpi-label">Priority Helpline</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Booking Spotlight Banner -->
+          <div class="spotlight-card" id="activeBookingSpotlight">
+            <div class="spotlight-left">
+              <div class="spotlight-badge">⚡</div>
+              <div class="spotlight-info">
+                <h3 id="spotlightTitle">Scheduled Service Dispatches</h3>
+                <p id="spotlightDesc">Checking active bookings in your local area...</p>
+              </div>
+            </div>
+            <div id="spotlightAction">
+              <a href="appointments.html" class="btn btn-secondary btn-sm">Manage in My Bookings ➜</a>
+            </div>
+          </div>
+
+          <!-- Quick Category Filter Chips -->
+          <div class="quick-chips-row">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Quick Jump:</span>
+            <a href="book.html?service=srv-electrical" class="quick-chip">⚡ Electrician</a>
+            <a href="book.html?service=srv-plumbing" class="quick-chip">🔧 Plumber</a>
+            <a href="book.html?service=srv-ac" class="quick-chip">❄️ AC Servicing</a>
+            <a href="book.html?service=srv-cleaning" class="quick-chip">✨ Deep Cleaning</a>
+            <a href="book.html?service=srv-carpentry" class="quick-chip">🪚 Carpenter</a>
+            <a href="book.html?service=srv-appliance" class="quick-chip">🧺 Appliance Fix</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Interactive Service Catalog -->
+      <section class="section" id="servicesCatalog">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Doorstep Services</div>
+            <h2 class="section-title">Schedule a Certified Home Service</h2>
+            <p class="section-desc">Select any service to pick specific repair tasks, select technicians, and calculate your live bill.</p>
+          </div>
+
+          <div class="services-grid">
+            <!-- 1. Electrical Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-electrical.jpg" alt="Electrical Repairs and Wiring Service">
+                <span class="service-category-tag">Electrical</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.9 (384)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Electrical Repairs &amp; Wiring</h3>
+                <p class="service-card-desc">Switchboard repairs, ceiling fan installations, fuse box fixes, and comprehensive safety wiring diagnostics.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Visit &amp; Diagnostic</span>
+                    <span class="price-value">₹299</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 45 - 90 mins</div>
+                </div>
+                <a href="book.html?service=srv-electrical" class="btn btn-primary">Book Electrician ➜</a>
+              </div>
+            </article>
+
+            <!-- 2. Plumbing Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-plumbing.jpg" alt="Plumbing and Pipe Leakage Service">
+                <span class="service-category-tag">Plumbing</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.8 (420)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Plumbing &amp; Drainage Fixes</h3>
+                <p class="service-card-desc">Tap &amp; mixer replacement, pipeline leakage plugging, drain unclogging, and flush tank maintenance.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Visit &amp; Diagnostic</span>
+                    <span class="price-value">₹349</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 60 - 120 mins</div>
+                </div>
+                <a href="book.html?service=srv-plumbing" class="btn btn-primary">Book Plumber ➜</a>
+              </div>
+            </article>
+
+            <!-- 3. AC Service Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-ac.jpg" alt="Air Conditioner Repair and Servicing">
+                <span class="service-category-tag">AC Service</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.9 (512)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">AC Repair &amp; Jet-Wash Servicing</h3>
+                <p class="service-card-desc">Deep jet-pump wash, refrigerant gas refilling, PCB diagnostic, and cooling performance tuning.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Base Service</span>
+                    <span class="price-value">₹499</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 60 - 90 mins</div>
+                </div>
+                <a href="book.html?service=srv-ac" class="btn btn-primary">Book AC Pro ➜</a>
+              </div>
+            </article>
+
+            <!-- 4. Cleaning Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-cleaning.jpg" alt="Deep Home and Kitchen Cleaning Service">
+                <span class="service-category-tag">Sanitization</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.9 (628)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Deep Home &amp; Kitchen Cleaning</h3>
+                <p class="service-card-desc">Hospital-grade sanitization, kitchen degreasing, bathroom tile descaling, and sofa shampoo extraction.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Starting Package</span>
+                    <span class="price-value">₹899</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 2 - 4 Hours</div>
+                </div>
+                <a href="book.html?service=srv-cleaning" class="btn btn-primary">Book Cleaning Crew ➜</a>
+              </div>
+            </article>
+
+            <!-- 5. Carpentry Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-carpentry.jpg" alt="Carpentry and Custom Furniture Assembly">
+                <span class="service-category-tag">Carpentry</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.8 (275)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Carpentry &amp; Furniture Assembly</h3>
+                <p class="service-card-desc">Door locks, wardrobe hinges, door trimming, custom shelves, and precision flat-pack assembly.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Base Service</span>
+                    <span class="price-value">₹399</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 60 - 120 mins</div>
+                </div>
+                <a href="book.html?service=srv-carpentry" class="btn btn-primary">Book Carpenter ➜</a>
+              </div>
+            </article>
+
+            <!-- 6. Appliance Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-appliance.jpg" alt="Home Appliance Repair Service">
+                <span class="service-category-tag">Appliance</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.8 (390)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Major Home Appliance Repair</h3>
+                <p class="service-card-desc">Washing machine spin errors, refrigerator cooling loss, microwave fixes, and water purifier filter replacement.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Inspection &amp; Fix</span>
+                    <span class="price-value">₹449</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 45 - 90 mins</div>
+                </div>
+                <a href="book.html?service=srv-appliance" class="btn btn-primary">Book Appliance Tech ➜</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transparent Comparison Table -->
+      <section class="section section-alt" id="pricingTableSection">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Standardized Rate Card</div>
+            <h2 class="section-title">Transparent Price &amp; Warranty Table</h2>
+            <p class="section-desc">Upfront rates across all services with full warranty coverage.</p>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th scope="col">Service Domain</th>
+                  <th scope="col">Diagnostic Fee</th>
+                  <th scope="col">Estimated Time</th>
+                  <th scope="col">Service Warranty</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>⚡ Electrical Repairs</strong></td>
+                  <td>₹299</td>
+                  <td>45 - 90 mins</td>
+                  <td>30-Day Guarantee</td>
+                  <td>★ 4.9 / 5.0</td>
+                  <td><a href="book.html?service=srv-electrical" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>🔧 Plumbing &amp; Drainage</strong></td>
+                  <td>₹349</td>
+                  <td>60 - 120 mins</td>
+                  <td>30-Day Guarantee</td>
+                  <td>★ 4.8 / 5.0</td>
+                  <td><a href="book.html?service=srv-plumbing" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>❄️ AC Repair &amp; Jet Service</strong></td>
+                  <td>₹499</td>
+                  <td>60 - 90 mins</td>
+                  <td>60-Day Cooling Guarantee</td>
+                  <td>★ 4.9 / 5.0</td>
+                  <td><a href="book.html?service=srv-ac" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>✨ Deep Cleaning &amp; Sanitization</strong></td>
+                  <td>₹899</td>
+                  <td>120 - 240 mins</td>
+                  <td>Free Reclean Guarantee</td>
+                  <td>★ 4.9 / 5.0</td>
+                  <td><a href="book.html?service=srv-cleaning" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>🪚 Carpentry &amp; Furniture</strong></td>
+                  <td>₹399</td>
+                  <td>60 - 120 mins</td>
+                  <td>45-Day Fitting Warranty</td>
+                  <td>★ 4.8 / 5.0</td>
+                  <td><a href="book.html?service=srv-carpentry" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>🧺 Appliance Repair</strong></td>
+                  <td>₹449</td>
+                  <td>45 - 90 mins</td>
+                  <td>60-Day Spare Parts Warranty</td>
+                  <td>★ 4.8 / 5.0</td>
+                  <td><a href="book.html?service=srv-appliance" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==============================================================================
+       CLEAN COMMERCIAL FOOTER
+       ============================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Home<span class="brand-highlight">Ease</span></h3>
+          <p>On-demand verified home repairs and technician appointment booking engine. Delivering trusted doorstep services with transparent rate cards and warranty coverage.</p>
+          <div style="margin-top: 1rem; color: #94A3B8; font-size: 0.85rem;">
+            📍 Operating in: Coimbatore, Chennai, Bangalore
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="book.html">Book Service</a></li>
+            <li><a href="appointments.html">My Bookings</a></li>
+            <li><a href="index.html#aboutSection">About HomeEase</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Popular Services</h4>
+          <ul class="footer-links">
+            <li><a href="book.html?service=srv-electrical">Electrician Service</a></li>
+            <li><a href="book.html?service=srv-plumbing">Plumbing Solutions</a></li>
+            <li><a href="book.html?service=srv-ac">AC Maintenance</a></li>
+            <li><a href="book.html?service=srv-cleaning">Deep Cleaning</a></li>
+            <li><a href="book.html?service=srv-carpentry">Carpentry Work</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Support &amp; Helpline</h4>
+          <p style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
+            📞 24/7 Helpline: <strong>1800-419-HOME</strong><br>
+            ✉️ Email: <strong>support@homeease.in</strong><br>
+            🕒 Hours: Mon - Sun (8:00 AM - 9:00 PM)<br>
+            🏢 Regional Hub: RS Puram, Coimbatore
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 HomeEase Technologies Inc. Developed by Akhilash S.</p>
+        <p>Doorstep Home Service Appointment Booking System</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==============================================================================
+       AUTHENTICATION MODAL
+       ============================================================================== -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Customer Account</h3>
+        <button class="modal-close-btn" onclick="closeAuthModal()">&times;</button>
+      </div>
+
+      <div style="display: flex; border-bottom: 1px solid var(--border);">
+        <button class="filter-btn active" id="tabLogin" style="flex: 1; border-radius: 0; border: none; border-bottom: 2px solid var(--primary);">Sign In</button>
+        <button class="filter-btn" id="tabRegister" style="flex: 1; border-radius: 0; border: none;">Create Account</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="formLogin">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" class="form-control" placeholder="name@domain.com" required value="akhilash@gmail.com">
+          </div>
+          <div class="form-group" style="margin-top: 1rem;">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required value="password123">
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+          </div>
+          <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+            Demo account: <code>akhilash@gmail.com</code> / <code>password123</code>
+          </p>
+        </form>
+
+        <form id="formRegister" style="display: none;">
+          <div class="form-group">
+            <label class="form-label" for="regName">Full Name</label>
+            <input type="text" id="regName" class="form-control" placeholder="e.g. Akhilash S" required>
+          </div>
+          <div class="form-group" style="margin-top: 0.8rem;">
+            <label class="form-label" for="regPhone">Mobile Number</label>
+            <input type="tel" id="regPhone" class="form-control" placeholder="10-digit mobile number" required pattern="[6-9][0-9]{9}">
+          </div>
+          <div class="form-group" style="margin-top: 0.8rem;">
+            <label class="form-label" for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="name@domain.com" required>
+          </div>
+          <div class="form-group" style="margin-top: 0.8rem;">
+            <label class="form-label" for="regPassword">Password</label>
+            <input type="password" id="regPassword" class="form-control" placeholder="Create password" required minlength="6">
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

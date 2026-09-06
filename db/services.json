@@ -1,0 +1,146 @@
+[
+  {
+    "id": "srv-electrical",
+    "name": "Electrical Repairs & Installation",
+    "category": "Electrical",
+    "tagline": "Safe & certified electrical fixes for home & office",
+    "icon": "⚡",
+    "basePrice": 299,
+    "duration": "45 - 90 mins",
+    "warranty": "30-Day Guarantee",
+    "rating": 4.9,
+    "reviewCount": 384,
+    "image": "assets/images/service-electrical.jpg",
+    "description": "Comprehensive electrical diagnostic, wiring repair, switchboard replacement, fan installation, MCB/fuse fixes, and safety inspections by licensed electricians.",
+    "subServices": [
+      { "id": "sub-elec-1", "name": "Switchboard & Socket Repair", "price": 149 },
+      { "id": "sub-elec-2", "name": "Ceiling Fan / Exhaust Installation", "price": 199 },
+      { "id": "sub-elec-3", "name": "MCB / Fuse Tripping Fix", "price": 249 },
+      { "id": "sub-elec-4", "name": "Complete Home Wiring Diagnostic", "price": 499 }
+    ],
+    "addOns": [
+      { "id": "add-elec-express", "name": "Express 60-Minute Arrival", "price": 99 },
+      { "id": "add-elec-warranty", "name": "Extended 60-Day Warranty Protection", "price": 149 }
+    ]
+  },
+  {
+    "id": "srv-plumbing",
+    "name": "Plumbing & Drainage Solutions",
+    "category": "Plumbing",
+    "tagline": "Prompt leak repairs, pipe fitting & drain cleaning",
+    "icon": "🔧",
+    "basePrice": 349,
+    "duration": "60 - 120 mins",
+    "warranty": "30-Day Guarantee",
+    "rating": 4.8,
+    "reviewCount": 420,
+    "image": "assets/images/service-plumbing.jpg",
+    "description": "Expert solutions for leaking pipes, tap/faucet replacements, blocked drains, flush tank issues, and overhead water tank pipeline maintenance.",
+    "subServices": [
+      { "id": "sub-plumb-1", "name": "Tap / Faucet Replacement or Leak Fix", "price": 149 },
+      { "id": "sub-plumb-2", "name": "Drain Unclogging & Cleaning", "price": 299 },
+      { "id": "sub-plumb-3", "name": "Toilet Flush Tank & Commode Fix", "price": 349 },
+      { "id": "sub-plumb-4", "name": "Water Motor / Pump Pipeline Setup", "price": 549 }
+    ],
+    "addOns": [
+      { "id": "add-plumb-express", "name": "Express 60-Minute Arrival", "price": 99 },
+      { "id": "add-plumb-parts", "name": "High-Grade Teflon & Washer Pack", "price": 79 }
+    ]
+  },
+  {
+    "id": "srv-ac",
+    "name": "Air Conditioner Repair & Servicing",
+    "category": "AC Service",
+    "tagline": "Deep jet-pump cleaning, gas refilling & cooling fixes",
+    "icon": "❄️",
+    "basePrice": 499,
+    "duration": "60 - 90 mins",
+    "warranty": "60-Day Cooling Guarantee",
+    "rating": 4.9,
+    "reviewCount": 512,
+    "image": "assets/images/service-ac.jpg",
+    "description": "Thorough indoor & outdoor jet-wash cleaning, refrigerant gas top-up, PCB circuit troubleshooting, filter sanitization, and cooling optimization.",
+    "subServices": [
+      { "id": "sub-ac-1", "name": "Jet-Pump Deep Servicing (Split/Window)", "price": 499 },
+      { "id": "sub-ac-2", "name": "Freon Gas Refill & Leak Detection", "price": 999 },
+      { "id": "sub-ac-3", "name": "AC PCB Repair & Diagnostics", "price": 599 },
+      { "id": "sub-ac-4", "name": "AC Uninstallation / Re-installation", "price": 799 }
+    ],
+    "addOns": [
+      { "id": "add-ac-foam", "name": "Anti-Bacterial Foam Jet Shield", "price": 149 },
+      { "id": "add-ac-express", "name": "Priority Heatwave Slot (Guaranteed)", "price": 129 }
+    ]
+  },
+  {
+    "id": "srv-cleaning",
+    "name": "Deep Home & Kitchen Sanitization",
+    "category": "Cleaning",
+    "tagline": "Hospital-grade sanitization, stain removal & deep polish",
+    "icon": "✨",
+    "basePrice": 899,
+    "duration": "120 - 240 mins",
+    "warranty": "100% Satisfaction or Free Reclean",
+    "rating": 4.9,
+    "reviewCount": 628,
+    "image": "assets/images/service-cleaning.jpg",
+    "description": "Full home deep scrub, grease removal for modular kitchens, bathroom tile descaling, sofa shampooing, floor buffing with eco-friendly chemicals.",
+    "subServices": [
+      { "id": "sub-clean-1", "name": "Deep Bathroom Disinfection (Single)", "price": 399 },
+      { "id": "sub-clean-2", "name": "Kitchen Degreasing & Chimney Scrub", "price": 699 },
+      { "id": "sub-clean-3", "name": "1 BHK / 2 BHK Deep Cleaning Package", "price": 1499 },
+      { "id": "sub-clean-4", "name": "Fabric Sofa & Carpet Vacuum Extraction", "price": 499 }
+    ],
+    "addOns": [
+      { "id": "add-clean-aroma", "name": "Organic Citrus Aroma Therapy Finish", "price": 99 },
+      { "id": "add-clean-pest", "name": "Cockroach & Ant Barrier Spray", "price": 199 }
+    ]
+  },
+  {
+    "id": "srv-carpentry",
+    "name": "Carpentry & Custom Furniture Assembly",
+    "category": "Carpentry",
+    "tagline": "Wood repairs, lock fixing, hinges & custom fittings",
+    "icon": "🪚",
+    "basePrice": 399,
+    "duration": "60 - 120 mins",
+    "warranty": "45-Day Fitting Warranty",
+    "rating": 4.8,
+    "reviewCount": 275,
+    "image": "assets/images/service-carpentry.jpg",
+    "description": "Precision carpentry by seasoned woodworkers. Door alignment, lock replacement, hinge repair, wardrobe shelf fixes, modular furniture assembly (IKEA/Urban Ladder).",
+    "subServices": [
+      { "id": "sub-carp-1", "name": "Door Lock & Handle Installation", "price": 199 },
+      { "id": "sub-carp-2", "name": "Cupboard / Wardrobe Hinge & Magnet Fix", "price": 249 },
+      { "id": "sub-carp-3", "name": "Flat-Pack Furniture Assembly (Bed / Table)", "price": 499 },
+      { "id": "sub-carp-4", "name": "Wooden Door Trimming & Planing", "price": 349 }
+    ],
+    "addOns": [
+      { "id": "add-carp-hardware", "name": "Heavy-Duty Stainless Steel Screws & Anchor Pack", "price": 79 },
+      { "id": "add-carp-polish", "name": "Wood Conditioner & Polish Coat", "price": 129 }
+    ]
+  },
+  {
+    "id": "srv-appliance",
+    "name": "Major Home Appliance Repair",
+    "category": "Appliance",
+    "tagline": "Washing machines, fridges, microwaves & water purifiers",
+    "icon": "🧺",
+    "basePrice": 449,
+    "duration": "45 - 90 mins",
+    "warranty": "60-Day Spare Parts Warranty",
+    "rating": 4.8,
+    "reviewCount": 390,
+    "image": "assets/images/service-appliance.jpg",
+    "description": "Accurate fault diagnostic and repair for all brands (LG, Samsung, Whirlpool, IFB, Bosch). Drum motor fixes, cooling thermostat, heating elements, and motherboards.",
+    "subServices": [
+      { "id": "sub-appl-1", "name": "Washing Machine Spin / Drain / Noise Fix", "price": 449 },
+      { "id": "sub-appl-2", "name": "Refrigerator Cooling & Gas Check", "price": 499 },
+      { "id": "sub-appl-3", "name": "Microwave Magnetron / Heating Fix", "price": 399 },
+      { "id": "sub-appl-4", "name": "RO Water Purifier Filter & Membrane Service", "price": 349 }
+    ],
+    "addOns": [
+      { "id": "add-appl-express", "name": "Emergency Same-Day Diagnostic", "price": 99 },
+      { "id": "add-appl-descaler", "name": "Appliance Descaling & Deep Flush Kit", "price": 149 }
+    ]
+  }
+]
