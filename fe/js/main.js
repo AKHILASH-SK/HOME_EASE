@@ -306,21 +306,22 @@ function showToast(message, type = 'success') {
     document.body.appendChild(container);
   }
 
+  const iconChar = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
   const toast = document.createElement('div');
   toast.className = `toast toast-${type}`;
   toast.innerHTML = `
-    <span>${type === 'success' ? '✅' : type === 'error' ? '⚠️' : 'ℹ️'}</span>
-    <span>${escapeHtml(message)}</span>
+    <div class="toast-icon">${iconChar}</div>
+    <div class="toast-message">${escapeHtml(message)}</div>
   `;
 
   container.appendChild(toast);
 
   setTimeout(() => {
     toast.style.opacity = '0';
-    toast.style.transform = 'translateY(-10px)';
+    toast.style.transform = 'translateX(40px)';
     toast.style.transition = 'all 0.25s ease';
     setTimeout(() => toast.remove(), 250);
-  }, 3200);
+  }, 3400);
 }
 
 /**

@@ -29,10 +29,6 @@
     position: static;
   }
 
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -101,10 +97,6 @@
     padding: 0.75rem 0.85rem;
     font-size: 0.825rem;
     white-space: nowrap;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
   }
 
   .footer-grid {
