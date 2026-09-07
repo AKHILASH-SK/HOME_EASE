@@ -161,11 +161,10 @@ function setCurrentUser(user) {
  */
 function handleLogout() {
   localStorage.removeItem(AUTH_KEY);
-  setupAuthUI();
   showToast('You have signed out successfully.', 'info');
-  if (window.location.pathname.includes('book') || window.location.pathname.includes('appointments')) {
+  setTimeout(() => {
     window.location.href = 'index.html';
-  }
+  }, 400);
 }
 
 /**
@@ -220,6 +219,9 @@ function setupAuthModal() {
           setCurrentUser(data.data);
           closeAuthModal();
           showToast(`Welcome, ${data.data.name}!`, 'success');
+          setTimeout(() => {
+            window.location.href = 'home.html';
+          }, 500);
         } else {
           showToast(data.message || 'Invalid credentials.', 'error');
         }
@@ -263,6 +265,9 @@ function setupAuthModal() {
           setCurrentUser(data.data);
           closeAuthModal();
           showToast(`Account created! Welcome, ${data.data.name}.`, 'success');
+          setTimeout(() => {
+            window.location.href = 'home.html';
+          }, 500);
         } else {
           showToast(data.message || 'Registration failed.', 'error');
         }

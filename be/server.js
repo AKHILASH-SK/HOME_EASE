@@ -39,6 +39,11 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static client assets (HTML, CSS, JS, images) from the "fe" directory
 app.use(express.static(FE_DIR));
 
+// Direct route for authenticated customer home screen
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(FE_DIR, 'home.html'));
+});
+
 // ==============================================================================
 // HELPER FUNCTIONS FOR FILE SYSTEM (JSON) OPERATIONS
 // ==============================================================================

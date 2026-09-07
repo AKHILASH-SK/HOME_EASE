@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard — HomeEase</title>
+  <meta name="description" content="Manage your active home service bookings, select certified technicians, and schedule doorstep visits across Coimbatore.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==============================================================================
+       HEADER & NAVIGATION BAR (Authenticated Customer View)
+       ============================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="home.html" class="brand-logo" aria-label="HomeEase Home">
+        <span class="brand-icon">🛠️</span>
+        <span>Home<span class="brand-highlight">Ease</span></span>
+      </a>
+
+      <!-- Customer Navigation Menu -->
+      <nav id="authNav" aria-label="Customer Navigation">
+        <ul class="nav-menu">
+          <li><a href="#portalDashboard" class="nav-link active" id="navDashboard" data-nav-target="portalDashboard">Dashboard</a></li>
+          <li><a href="#servicesCatalog" class="nav-link" id="navServices" data-nav-target="servicesCatalog">Services</a></li>
+          <li><a href="#pricingTableSection" class="nav-link" id="navPriceCard" data-nav-target="pricingTableSection">Price Card</a></li>
+          <li><a href="book.html" class="nav-link">Book Appointment</a></li>
+          <li><a href="appointments.html" class="nav-link">My Bookings</a></li>
+        </ul>
+      </nav>
+
+      <!-- Customer Actions -->
+      <div class="header-actions" id="userNavActions">
+        <div class="user-status-badge">
+          <span>👤</span>
+          <span id="userNameBadge">Customer</span>
+        </div>
+        <a href="book.html" class="btn btn-primary btn-sm">+ Book Service</a>
+        <button class="btn btn-secondary btn-sm" onclick="handleLogout()">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==============================================================================
+         AUTHENTICATED CUSTOMER PORTAL
+         ============================================================================== -->
+    <div id="authView">
+      <!-- Hero Welcome Greeting -->
+      <section class="portal-hero" id="portalDashboard">
+        <div class="container">
+          <div class="portal-welcome-row">
+            <div class="portal-greeting">
+              <h1 id="welcomeGreeting">Good morning, Customer 👋</h1>
+            </div>
+
+            <div style="display: flex; gap: 0.85rem; align-items: center;">
+              <a href="book.html" class="btn btn-primary">⚡ Book New Appointment</a>
+              <a href="appointments.html" class="btn btn-secondary">📋 My Bookings (<span id="userActiveBookingsCount">0</span>)</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Interactive Service Catalog -->
+      <section class="section" id="servicesCatalog">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Doorstep Services</div>
+            <h2 class="section-title">Schedule a Certified Home Service</h2>
+            <p class="section-desc">Select any service to pick specific repair tasks, select technicians, and calculate your live bill.</p>
+          </div>
+
+          <div class="services-grid">
+            <!-- 1. Electrical Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-electrical.jpg" alt="Electrical Repairs and Wiring Service">
+                <span class="service-category-tag">⚡ Electrical</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.9 (384)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Electrical Repairs &amp; Wiring</h3>
+                <p class="service-card-desc">Switchboard repairs, ceiling fan installations, fuse box fixes, and comprehensive safety wiring diagnostics.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Visit &amp; Diagnostic</span>
+                    <span class="price-value">₹299</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 45 - 90 mins</div>
+                </div>
+                <a href="book.html?service=srv-electrical" class="btn btn-primary">Book Electrician ➜</a>
+              </div>
+            </article>
+
+            <!-- 2. Plumbing Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-plumbing.jpg" alt="Plumbing and Pipe Leakage Service">
+                <span class="service-category-tag">🔧 Plumbing</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.8 (420)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Plumbing &amp; Drainage Fixes</h3>
+                <p class="service-card-desc">Tap &amp; mixer replacement, pipeline leakage plugging, drain unclogging, and flush tank maintenance.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Visit &amp; Diagnostic</span>
+                    <span class="price-value">₹349</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 60 - 120 mins</div>
+                </div>
+                <a href="book.html?service=srv-plumbing" class="btn btn-primary">Book Plumber ➜</a>
+              </div>
+            </article>
+
+            <!-- 3. AC Service Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-ac.jpg" alt="Air Conditioner Repair and Servicing">
+                <span class="service-category-tag">❄️ AC Service</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.9 (512)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">AC Repair &amp; Jet-Wash Servicing</h3>
+                <p class="service-card-desc">Deep jet-pump wash, refrigerant gas refilling, PCB diagnostic, and cooling performance tuning.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Base Service</span>
+                    <span class="price-value">₹499</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 60 - 90 mins</div>
+                </div>
+                <a href="book.html?service=srv-ac" class="btn btn-primary">Book AC Pro ➜</a>
+              </div>
+            </article>
+
+            <!-- 4. Cleaning Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-cleaning.jpg" alt="Deep Home and Kitchen Cleaning Service">
+                <span class="service-category-tag">✨ Deep Cleaning</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.9 (628)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Deep Home &amp; Kitchen Cleaning</h3>
+                <p class="service-card-desc">Hospital-grade sanitization, kitchen degreasing, bathroom tile descaling, and sofa shampoo extraction.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Starting Package</span>
+                    <span class="price-value">₹899</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 2 - 4 Hours</div>
+                </div>
+                <a href="book.html?service=srv-cleaning" class="btn btn-primary">Book Cleaning Crew ➜</a>
+              </div>
+            </article>
+
+            <!-- 5. Carpentry Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-carpentry.jpg" alt="Carpentry and Custom Furniture Assembly">
+                <span class="service-category-tag">🪚 Carpentry</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.8 (275)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Carpentry &amp; Furniture Assembly</h3>
+                <p class="service-card-desc">Door locks, wardrobe hinges, door trimming, custom shelves, and precision flat-pack assembly.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Base Service</span>
+                    <span class="price-value">₹399</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 60 - 120 mins</div>
+                </div>
+                <a href="book.html?service=srv-carpentry" class="btn btn-primary">Book Carpenter ➜</a>
+              </div>
+            </article>
+
+            <!-- 6. Appliance Card -->
+            <article class="service-card">
+              <div class="service-card-media">
+                <img src="assets/images/service-appliance.jpg" alt="Home Appliance Repair Service">
+                <span class="service-category-tag">🧺 Appliance Repair</span>
+                <span class="service-rating-tag"><span class="star">★</span> 4.8 (390)</span>
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Major Home Appliance Repair</h3>
+                <p class="service-card-desc">Washing machine spin errors, refrigerator cooling loss, microwave fixes, and water purifier filter replacement.</p>
+                <div class="service-card-meta">
+                  <div class="service-price-box">
+                    <span class="price-label">Inspection &amp; Fix</span>
+                    <span class="price-value">₹449</span>
+                  </div>
+                  <div class="service-duration-box">⏱️ 45 - 90 mins</div>
+                </div>
+                <a href="book.html?service=srv-appliance" class="btn btn-primary">Book Appliance Tech ➜</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transparent Comparison Table -->
+      <section class="section section-alt" id="pricingTableSection">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-sub">Standardized Rate Card</div>
+            <h2 class="section-title">Transparent Price &amp; Warranty Table</h2>
+            <p class="section-desc">Upfront rates across all services with full warranty coverage.</p>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="custom-table" summary="Standardized price and warranty rate card for all HomeEase doorstep services">
+              <thead>
+                <tr>
+                  <th scope="col">Service Domain</th>
+                  <th scope="col">Diagnostic Fee</th>
+                  <th scope="col">Estimated Time</th>
+                  <th scope="col">Service Warranty</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>⚡ Electrical Repairs</strong></td>
+                  <td>₹299</td>
+                  <td>45 - 90 mins</td>
+                  <td>30-Day Guarantee</td>
+                  <td>★ 4.9 / 5.0</td>
+                  <td><a href="book.html?service=srv-electrical" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>🔧 Plumbing &amp; Drainage</strong></td>
+                  <td>₹349</td>
+                  <td>60 - 120 mins</td>
+                  <td>30-Day Guarantee</td>
+                  <td>★ 4.8 / 5.0</td>
+                  <td><a href="book.html?service=srv-plumbing" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>❄️ AC Repair &amp; Jet Service</strong></td>
+                  <td>₹499</td>
+                  <td>60 - 90 mins</td>
+                  <td>60-Day Cooling Guarantee</td>
+                  <td>★ 4.9 / 5.0</td>
+                  <td><a href="book.html?service=srv-ac" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>✨ Deep Cleaning &amp; Sanitization</strong></td>
+                  <td>₹899</td>
+                  <td>120 - 240 mins</td>
+                  <td>Free Reclean Guarantee</td>
+                  <td>★ 4.9 / 5.0</td>
+                  <td><a href="book.html?service=srv-cleaning" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>🪚 Carpentry &amp; Furniture</strong></td>
+                  <td>₹399</td>
+                  <td>60 - 120 mins</td>
+                  <td>45-Day Fitting Warranty</td>
+                  <td>★ 4.8 / 5.0</td>
+                  <td><a href="book.html?service=srv-carpentry" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+                <tr>
+                  <td><strong>🧺 Appliance Repair</strong></td>
+                  <td>₹449</td>
+                  <td>45 - 90 mins</td>
+                  <td>60-Day Spare Parts Warranty</td>
+                  <td>★ 4.8 / 5.0</td>
+                  <td><a href="book.html?service=srv-appliance" class="btn btn-secondary btn-sm">Book</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==============================================================================
+       FOOTER
+       ============================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Home<span class="brand-highlight">Ease</span></h3>
+          <p>On-demand verified home repairs and technician appointment booking engine. Delivering trusted doorstep services with transparent rate cards and warranty coverage.</p>
+          <div style="margin-top: 1rem; color: #94A3B8; font-size: 0.85rem;">
+            📍 Operating in: Coimbatore, Chennai, Bangalore
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="home.html">Dashboard</a></li>
+            <li><a href="book.html">Book Service</a></li>
+            <li><a href="appointments.html">My Bookings</a></li>
+            <li><a href="home.html#servicesCatalog">Services</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Popular Services</h4>
+          <ul class="footer-links">
+            <li><a href="book.html?service=srv-electrical">Electrician Service</a></li>
+            <li><a href="book.html?service=srv-plumbing">Plumbing Solutions</a></li>
+            <li><a href="book.html?service=srv-ac">AC Maintenance</a></li>
+            <li><a href="book.html?service=srv-cleaning">Deep Cleaning</a></li>
+            <li><a href="book.html?service=srv-carpentry">Carpentry Work</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Support &amp; Helpline</h4>
+          <p style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
+            📞 24/7 Helpline: <strong>1800-419-HOME</strong><br>
+            ✉️ Email: <strong>support@homeease.in</strong><br>
+            🕒 Hours: Mon - Sun (8:00 AM - 9:00 PM)<br>
+            🏢 Regional Hub: RS Puram, Coimbatore
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 HomeEase Services Private Limited. All rights reserved.</div>
+        <div>Standardized Institutional Pricing • Verified Technicians</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
