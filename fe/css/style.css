@@ -69,6 +69,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
 }
 
 body {
@@ -830,7 +831,7 @@ button, input, select, textarea {
    AUTHENTICATED CUSTOMER PORTAL (Dashboard Feed UI)
    ============================================================================== */
 .portal-hero {
-  padding: 2.5rem 0;
+  padding: 2.25rem 0;
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   border-bottom: 1px solid var(--border);
 }
@@ -841,7 +842,7 @@ button, input, select, textarea {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .portal-greeting h1 {
@@ -849,142 +850,6 @@ button, input, select, textarea {
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--text-primary);
-}
-
-.portal-greeting p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-top: 0.25rem;
-}
-
-/* KPI Overview Cards */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.kpi-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1.35rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  box-shadow: var(--shadow-xs);
-  transition: var(--transition);
-}
-
-.kpi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-border);
-}
-
-.kpi-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-}
-
-.kpi-primary { background: var(--primary-light); color: var(--primary); }
-.kpi-success { background: var(--success-light); color: var(--success); }
-.kpi-info { background: var(--info-light); color: var(--info); }
-.kpi-accent { background: var(--accent-light); color: var(--accent); }
-
-.kpi-value {
-  font-size: 1.6rem;
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--text-primary);
-}
-
-.kpi-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Spotlight Card (Next scheduled booking) */
-.spotlight-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem 2rem;
-  margin-bottom: 3.5rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.spotlight-left {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.spotlight-badge {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  background: var(--primary-light);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-}
-
-.spotlight-info h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.spotlight-info p {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-}
-
-/* Quick Category Action Chips */
-.quick-chips-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-}
-
-.quick-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  box-shadow: var(--shadow-xs);
-  transition: var(--transition);
-}
-
-.quick-chip:hover {
-  background: var(--primary-light);
-  border-color: var(--primary-border);
-  color: var(--primary);
 }
 
 /* ==============================================================================

@@ -11,6 +11,7 @@ const AUTH_KEY = 'homeease_user_session';
 document.addEventListener('DOMContentLoaded', () => {
   setupAuthUI();
   setupAuthModal();
+  setupNavScrollSpy();
 });
 
 /**
@@ -52,9 +53,12 @@ function setupAuthUI() {
       guestView.style.display = 'none';
       authView.style.display = 'block';
       if (welcomeGreeting) {
-        welcomeGreeting.textContent = `Good day, ${currentUser.name} 👋`;
+        const hour = new Date().getHours();
+        const prefix = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+        welcomeGreeting.textContent = `${prefix}, ${currentUser.name} 👋`;
       }
       loadCustomerDashboardMetrics();
+      setupNavScrollSpy();
     } else {
       guestView.style.display = 'block';
       authView.style.display = 'none';
@@ -332,4 +336,103 @@ function escapeHtml(str) {
   return str.replace(/[&<>'"]/g, 
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
+}
+
+/**
+ * Setup Active Navigation Indicator & ScrollSpy for Single-Page In-Page Anchors
+ */
+function setupNavScrollSpy() {
+  const authNav = document.getElementById('authNav');
+  if (!authNav) return;
+
+  const navLinks = authNav.querySelectorAll('.nav-link[data-nav-target]');
+  if (!navLinks.length) return;
+
+  const sections = [
+    { id: 'portalDashboard', el: document.getElementById('portalDashboard') },
+    { id: 'servicesCatalog', el: document.getElementById('servicesCatalog') },
+    { id: 'pricingTableSection', el: document.getElementById('pricingTableSection') }
+  ].filter(item => item.el !== null);
+
+  if (!sections.length) return;
+
+  let isManualClick = false;
+  let manualTimeout = null;
+
+  function setActive(targetId) {
+    navLinks.forEach(link => {
+      if (link.getAttribute('data-nav-target') === targetId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  // Handle click on navigation anchors
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('data-nav-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        isManualClick = true;
+        clearTimeout(manualTimeout);
+        setActive(targetId);
+
+        const headerOffset = 76;
+        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+
+        if (history.replaceState) {
+          history.replaceState(null, null, `#${targetId}`);
+        }
+
+        // Resume scroll listening after scroll animation completes
+        manualTimeout = setTimeout(() => {
+          isManualClick = false;
+        }, 850);
+      }
+    });
+  });
+
+  // ScrollSpy listener to dynamically move the active indicator on user scroll
+  window.addEventListener('scroll', () => {
+    if (isManualClick) return;
+
+    // Check if user scrolled near the bottom of page
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 80)) {
+      setActive('pricingTableSection');
+      return;
+    }
+
+    const scrollY = window.scrollY;
+    // If near top of dashboard
+    if (scrollY < 200) {
+      setActive('portalDashboard');
+      return;
+    }
+
+    const offset = 140;
+    let currentId = 'portalDashboard';
+
+    for (let i = 0; i < sections.length; i++) {
+      const top = sections[i].el.getBoundingClientRect().top;
+      if (top <= offset) {
+        currentId = sections[i].id;
+      }
+    }
+    setActive(currentId);
+  }, { passive: true });
+
+  // On page load, set active from initial URL hash if present
+  if (window.location.hash) {
+    const hash = window.location.hash.replace('#', '');
+    if (sections.some(s => s.id === hash)) {
+      setActive(hash);
+    }
+  }
 }

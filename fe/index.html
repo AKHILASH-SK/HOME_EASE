@@ -24,9 +24,9 @@
       <!-- Authenticated Navigation (Only visible after customer logs in) -->
       <nav id="authNav" aria-label="Customer Navigation" style="display: none;">
         <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link active">Dashboard</a></li>
-          <li><a href="#servicesCatalog" class="nav-link">Services</a></li>
-          <li><a href="#pricingTableSection" class="nav-link">Price Card</a></li>
+          <li><a href="#portalDashboard" class="nav-link active" id="navDashboard" data-nav-target="portalDashboard">Dashboard</a></li>
+          <li><a href="#servicesCatalog" class="nav-link" id="navServices" data-nav-target="servicesCatalog">Services</a></li>
+          <li><a href="#pricingTableSection" class="nav-link" id="navPriceCard" data-nav-target="pricingTableSection">Price Card</a></li>
           <li><a href="book.html" class="nav-link">Book Appointment</a></li>
           <li><a href="appointments.html" class="nav-link">My Bookings</a></li>
         </ul>
@@ -323,30 +323,18 @@
          booking options live!
          ============================================================================== -->
     <div id="authView" style="display: none;">
-      <section class="portal-hero">
+      <section class="portal-hero" id="portalDashboard">
         <div class="container">
           <!-- Welcome Greeting Row -->
           <div class="portal-welcome-row">
             <div class="portal-greeting">
-              <h1 id="welcomeGreeting">Good day, Akhilash S 👋</h1>
-              <p>Manage your active home service bookings or schedule a new technician visit.</p>
+              <h1 id="welcomeGreeting">Good morning, Akhilash S 👋</h1>
             </div>
 
             <div style="display: flex; gap: 0.85rem; align-items: center;">
               <a href="book.html" class="btn btn-primary">⚡ Book New Appointment</a>
               <a href="appointments.html" class="btn btn-secondary">📋 My Bookings (<span id="userActiveBookingsCount">0</span>)</a>
             </div>
-          </div>
-
-          <!-- Quick Category Filter Chips -->
-          <div class="quick-chips-row">
-            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Quick Jump:</span>
-            <a href="book.html?service=srv-electrical" class="quick-chip">⚡ Electrician</a>
-            <a href="book.html?service=srv-plumbing" class="quick-chip">🔧 Plumber</a>
-            <a href="book.html?service=srv-ac" class="quick-chip">❄️ AC Servicing</a>
-            <a href="book.html?service=srv-cleaning" class="quick-chip">✨ Deep Cleaning</a>
-            <a href="book.html?service=srv-carpentry" class="quick-chip">🪚 Carpenter</a>
-            <a href="book.html?service=srv-appliance" class="quick-chip">🧺 Appliance Fix</a>
           </div>
         </div>
       </section>
