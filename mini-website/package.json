@@ -1,0 +1,23 @@
+{
+  "name": "homeease-mini-website",
+  "version": "1.0.0",
+  "description": "HomeEase Mini - A clean, beginner-friendly single-page home service appointment booking application built with HTML, CSS, JavaScript, and Node.js.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "home-services",
+    "appointment-booking",
+    "beginner",
+    "student-project",
+    "nodejs",
+    "express"
+  ],
+  "author": "Akhilash S",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}

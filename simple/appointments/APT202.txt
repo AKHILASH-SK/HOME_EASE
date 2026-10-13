@@ -1,0 +1,14 @@
+================================================
+   HOMEEASE APPOINTMENT BOOKING RECORD
+================================================
+Appointment ID : APT202
+Customer Name  : Priya Rajesh
+Customer Phone : 9789234110
+Service Type   : Plumbing & Drainage Solutions
+Preferred Slot : Weekend (10:00 AM - 12:00 PM)
+Booking Status : Confirmed
+------------------------------------------------
+Problem Description / Service Details:
+Kitchen sink mixer tap dripping and pipeline clog.
+================================================
+Recorded On    : 8/9/2026, 10:55:55 pm

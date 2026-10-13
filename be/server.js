@@ -240,17 +240,43 @@ app.post('/api/bookings', async (req, res) => {
     }
 
     // Calculate Pricing
-    const basePrice = selectedService.basePrice || 299;
+    const basePrice = Number(selectedService.basePrice) || 299;
     
-    // Calculate Add-on totals
-    let addOnsTotal = 0;
-    if (Array.isArray(addOns)) {
-      addOns.forEach(add => {
-        addOnsTotal += (Number(add.price) || 0);
+    // Calculate Sub-Services (Specific Repairs/Tasks) total
+    let subServicesTotal = 0;
+    if (Array.isArray(subServices) && selectedService.subServices) {
+      subServices.forEach(subItem => {
+        const subIdentifier = typeof subItem === 'object' && subItem !== null ? (subItem.name || subItem.id) : subItem;
+        const matched = selectedService.subServices.find(
+          s => s.name === subIdentifier || s.id === subIdentifier
+        );
+        if (matched) {
+          subServicesTotal += (Number(matched.price) || 0);
+        } else if (typeof subItem === 'object' && subItem.price) {
+          subServicesTotal += (Number(subItem.price) || 0);
+        }
       });
     }
 
-    const subTotal = basePrice + addOnsTotal;
+    // Calculate Add-on totals
+    let addOnsOnlyTotal = 0;
+    if (Array.isArray(addOns)) {
+      addOns.forEach(add => {
+        const addIdentifier = typeof add === 'object' && add !== null ? (add.id || add.name) : add;
+        const matched = selectedService.addOns ? selectedService.addOns.find(
+          a => a.id === addIdentifier || a.name === addIdentifier
+        ) : null;
+        if (matched) {
+          addOnsOnlyTotal += (Number(matched.price) || 0);
+        } else if (typeof add === 'object' && add.price) {
+          addOnsOnlyTotal += (Number(add.price) || 0);
+        }
+      });
+    }
+
+    // Combined repairs & add-ons total (matching frontend line-item)
+    const combinedAddOnsTotal = subServicesTotal + addOnsOnlyTotal;
+    const subTotal = basePrice + combinedAddOnsTotal;
     const tax = Math.round(subTotal * 0.18); // 18% GST standard service tax
     const totalAmount = subTotal + tax;
 
@@ -289,7 +315,9 @@ app.post('/api/bookings', async (req, res) => {
       },
       pricing: {
         basePrice,
-        addOnsTotal,
+        subServicesTotal,
+        addOnsOnlyTotal,
+        addOnsTotal: combinedAddOnsTotal,
         tax,
         totalAmount
       },

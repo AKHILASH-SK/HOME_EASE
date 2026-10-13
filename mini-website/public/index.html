@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeEase Mini - Home Service Appointment Booking</title>
+  <meta name="description" content="A clean, student-friendly single-page home service appointment booking application built with HTML, CSS, JavaScript, and Node.js.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- NAVIGATION BAR                                                            -->
+  <!-- ========================================================================= -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <span class="brand-icon">🛠️</span>
+        <div class="brand-text">
+          <span class="brand-name">HomeEase <span class="badge-mini">Mini</span></span>
+          <span class="brand-tagline">Home Services on Demand</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#services" class="nav-link active">Services</a>
+        <a href="#booking-section" class="nav-link" id="navBookLink">Book Appointment</a>
+        <a href="#my-bookings" class="nav-link" id="navMyBookingsLink">All Bookings</a>
+      </nav>
+
+      <div class="nav-auth" id="navAuth">
+        <!-- Injected dynamically by app.js (Sign in button or user pill) -->
+        <button type="button" class="btn btn-outline" id="openAuthModalBtn">
+          <span>👤</span> Sign In
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- HERO SECTION                                                              -->
+  <!-- ========================================================================= -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-badge">⚡ Quick &amp; Trusted Home Services</div>
+      <h1 class="hero-title">Expert Home Repairs &amp; Maintenance Made Simple</h1>
+      <p class="hero-subtitle">
+        Book certified electricians, plumbers, AC technicians, and cleaners in just a few clicks. 
+        Instant slot confirmation, upfront pricing, and guaranteed customer satisfaction.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#booking-section" class="btn btn-primary btn-lg" id="heroBookBtn">
+          <span>📅</span> Book an Appointment
+        </a>
+        <a href="#services" class="btn btn-secondary btn-lg">
+          <span>🔍</span> Explore Services
+        </a>
+      </div>
+
+      <div class="hero-highlights">
+        <div class="highlight-item">
+          <span class="highlight-icon">⏱️</span>
+          <div>
+            <strong>60-Min Arrival</strong>
+            <small>Quick response time</small>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🛡️</span>
+          <div>
+            <strong>Verified Technicians</strong>
+            <small>Background checked</small>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">💳</span>
+          <div>
+            <strong>Transparent Rates</strong>
+            <small>Pay after service</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SERVICES CATALOG SECTION                                                  -->
+  <!-- ========================================================================= -->
+  <section id="services" class="section services-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Service Catalog</div>
+        <h2 class="section-title">Select from Our Verified Services</h2>
+        <p class="section-subtitle">
+          Choose a service category to see upfront pricing and book your appointment directly.
+        </p>
+
+        <!-- Category Filters -->
+        <div class="category-filters" id="categoryFilters">
+          <button type="button" class="filter-btn active" data-category="All">All Services</button>
+          <button type="button" class="filter-btn" data-category="Electrical">Electrical</button>
+          <button type="button" class="filter-btn" data-category="Plumbing">Plumbing</button>
+          <button type="button" class="filter-btn" data-category="Appliances">Appliances</button>
+          <button type="button" class="filter-btn" data-category="Cleaning">Cleaning</button>
+          <button type="button" class="filter-btn" data-category="Carpentry">Carpentry</button>
+          <button type="button" class="filter-btn" data-category="Painting">Painting</button>
+        </div>
+      </div>
+
+      <!-- Services Grid (Dynamic) -->
+      <div class="services-grid" id="servicesGrid">
+        <div class="loading-spinner">Loading services...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- GUEST CTA SECTION (Shown only when NOT logged in)                         -->
+  <!-- ========================================================================= -->
+  <section class="section guest-cta-section" id="guestCtaSection">
+    <div class="section-container">
+      <div class="guest-cta-card">
+        <div class="guest-cta-icon">🔐</div>
+        <div class="guest-cta-content">
+          <h3>Ready to Schedule an Expert Service?</h3>
+          <p>Please sign in with your name and phone number to unlock appointment scheduling, select arrival slots, and view your bookings.</p>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg" id="guestSignInBtn">
+          <span>👤</span> Sign In to Book
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- BOOKING SECTION (Locked behind login)                                     -->
+  <!-- ========================================================================= -->
+  <section id="booking-section" class="section booking-section auth-required-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Fast Booking</div>
+        <h2 class="section-title">Schedule Your Home Service</h2>
+        <p class="section-subtitle">
+          Select your service, choose your convenient time slot, and confirm your appointment.
+        </p>
+      </div>
+
+      <div class="booking-grid">
+        <!-- Left: Booking Form -->
+        <div class="booking-form-card">
+          <form id="appointmentBookingForm" novalidate>
+            <div class="form-group">
+              <label for="serviceSelect">Selected Service <span class="required">*</span></label>
+              <select id="serviceSelect" name="serviceId" required>
+                <option value="" disabled selected>-- Choose a Service --</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="custName">Your Full Name <span class="required">*</span></label>
+                <input type="text" id="custName" name="customerName" placeholder="e.g. Rahul Sharma" required>
+                <span class="field-error" id="custNameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="custPhone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="custPhone" name="customerPhone" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
+                <span class="field-error" id="custPhoneError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="custEmail">Email Address</label>
+              <input type="email" id="custEmail" name="customerEmail" placeholder="e.g. rahul@example.com">
+              <span class="field-error" id="custEmailError"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="aptDate">Appointment Date <span class="required">*</span></label>
+                <input type="date" id="aptDate" name="appointmentDate" required>
+                <span class="field-error" id="aptDateError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="aptSlot">Preferred Time Slot <span class="required">*</span></label>
+                <select id="aptSlot" name="appointmentSlot" required>
+                  <option value="09:00 AM - 11:00 AM">09:00 AM - 11:00 AM (Morning)</option>
+                  <option value="11:00 AM - 01:00 PM">11:00 AM - 01:00 PM (Midday)</option>
+                  <option value="02:00 PM - 04:00 PM" selected>02:00 PM - 04:00 PM (Afternoon)</option>
+                  <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM (Evening)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="custAddress">Service Address &amp; Landmark <span class="required">*</span></label>
+              <input type="text" id="custAddress" name="address" placeholder="e.g. 14B, Greenview Apts, Avinashi Rd, Coimbatore" required>
+              <span class="field-error" id="custAddressError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="custNotes">Problem Description / Notes</label>
+              <textarea id="custNotes" name="notes" rows="3" placeholder="Describe the issue or any specific requirements (e.g. Ceiling fan regulator sparking)"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="submitBookingBtn">
+              <span>📅</span> Confirm &amp; Book Appointment
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Order Preview & Assurance Card -->
+        <div class="booking-summary-card">
+          <div class="summary-header">
+            <h3>Appointment Summary</h3>
+            <span class="summary-badge" id="summaryCategoryBadge">Service</span>
+          </div>
+
+          <div class="summary-service-details">
+            <div class="summary-icon" id="summaryServiceIcon">🛠️</div>
+            <div class="summary-info">
+              <h4 id="summaryServiceName">Please choose a service</h4>
+              <p id="summaryServiceDuration">Duration: --</p>
+            </div>
+          </div>
+
+          <div class="summary-pricing-table">
+            <div class="pricing-row">
+              <span>Standard Service Fee</span>
+              <strong id="summaryBasePrice">₹0</strong>
+            </div>
+            <div class="pricing-row">
+              <span>Visiting &amp; Inspection Charge</span>
+              <span class="text-free">FREE</span>
+            </div>
+            <div class="pricing-row">
+              <span>Taxes &amp; Platform Fee</span>
+              <span>₹0</span>
+            </div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-row total-row">
+              <span>Total Payable at Doorstep</span>
+              <strong id="summaryTotalPrice">₹0</strong>
+            </div>
+          </div>
+
+          <div class="summary-guarantees">
+            <div class="guarantee-item">
+              <span>✅</span>
+              <div>
+                <strong>Zero Pre-Payment</strong>
+                <p>Pay securely in cash or UPI after service is completed.</p>
+              </div>
+            </div>
+            <div class="guarantee-item">
+              <span>🛡️</span>
+              <div>
+                <strong>30-Day Service Guarantee</strong>
+                <p>Free re-work if you encounter any issue within 30 days.</p>
+              </div>
+            </div>
+            <div class="guarantee-item">
+              <span>🔄</span>
+              <div>
+                <strong>Free Rescheduling &amp; Cancellation</strong>
+                <p>Cancel or change your slot anytime from the My Bookings tab.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- ALL BOOKINGS & TRACKING SECTION (Locked behind login)                     -->
+  <!-- ========================================================================= -->
+  <section id="my-bookings" class="section bookings-section auth-required-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Tracking &amp; Records</div>
+        <h2 class="section-title">All Appointments &amp; Tracking</h2>
+        <p class="section-subtitle">
+          View all scheduled appointments, search by ID or customer, and manage service statuses.
+        </p>
+      </div>
+
+      <!-- Search & Filters Toolbar -->
+      <div class="bookings-toolbar">
+        <div class="search-box">
+          <input type="text" id="bookingSearchInput" placeholder="Search by ID (e.g. HE-1001), customer name or phone...">
+          <button type="button" class="btn btn-secondary" id="searchBookingBtn">
+            <span>🔍</span> Search
+          </button>
+          <button type="button" class="btn btn-outline" id="clearSearchBtn">Clear</button>
+        </div>
+
+        <!-- Service Manager Mode Toggle -->
+        <label class="manager-toggle-label" title="Enable Service Manager status controls">
+          <input type="checkbox" id="managerModeToggle">
+          <span class="manager-toggle-pill">🛠️ Manager Mode</span>
+        </label>
+      </div>
+
+      <!-- Bookings List Container -->
+      <div class="bookings-list" id="bookingsList">
+        <div class="loading-spinner">Loading appointments...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SIGN IN / USER PROFILE MODAL                                              -->
+  <!-- ========================================================================= -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><span>👤</span> Customer Sign In</h3>
+        <button type="button" class="modal-close-btn" id="closeAuthModalBtn">&times;</button>
+      </div>
+      <p class="modal-subtitle">
+        Sign in with your name and phone number to automatically pre-fill booking forms and manage your appointments.
+      </p>
+
+      <form id="authForm" novalidate>
+        <div class="form-group">
+          <label for="authName">Your Name <span class="required">*</span></label>
+          <input type="text" id="authName" placeholder="e.g. Rahul Sharma" required>
+          <span class="field-error" id="authNameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="authPhone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="authPhone" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
+          <span class="field-error" id="authPhoneError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="authEmail">Email Address</label>
+          <input type="email" id="authEmail" placeholder="e.g. rahul@example.com">
+          <span class="field-error" id="authEmailError"></span>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancelAuthModalBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Sign In / Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- TOAST NOTIFICATIONS CONTAINER                                             -->
+  <!-- ========================================================================= -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER                                                                    -->
+  <!-- ========================================================================= -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="brand-icon">🛠️</span>
+        <strong>HomeEase Mini</strong>
+        <p>Simple &amp; Clean Home Service Appointment Booking Web Application</p>
+      </div>
+      <div class="footer-tech">
+        <span>Tech Stack:</span>
+        <span class="tech-pill">HTML5</span>
+        <span class="tech-pill">CSS3</span>
+        <span class="tech-pill">Vanilla JS</span>
+        <span class="tech-pill">Node.js Express</span>
+        <span class="tech-pill">JSON File Persistence</span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 HomeEase Mini. Designed for Student Learning &amp; Demonstration.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

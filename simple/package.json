@@ -1,0 +1,12 @@
+{
+  "name": "homeease-simple-appointment",
+  "version": "1.0.0",
+  "description": "Simple Home Service Appointment Booking and Retrieval with Node.js and Text File Storage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}

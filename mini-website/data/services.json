@@ -1,0 +1,92 @@
+[
+  {
+    "id": "srv-electrical",
+    "title": "Electrical Repairs & Wiring",
+    "category": "Electrical",
+    "price": 399,
+    "duration": "60 mins",
+    "icon": "⚡",
+    "badge": "Popular",
+    "description": "Switchboard fixes, short circuit diagnosis, appliance wiring, fan installation, and MCB replacement.",
+    "features": [
+      "Certified electrician arrival in 60 mins",
+      "Safety inspection included",
+      "30-day post-service warranty"
+    ]
+  },
+  {
+    "id": "srv-plumbing",
+    "title": "Plumbing & Drainage Solutions",
+    "category": "Plumbing",
+    "price": 349,
+    "duration": "45 mins",
+    "icon": "🔧",
+    "badge": "Essential",
+    "description": "Leaky tap fixes, pipeline unblocking, toilet cistern repairs, water motor checks, and sink drainage.",
+    "features": [
+      "Standard spare parts support",
+      "Mess-free clean repair guarantee",
+      "Pressure testing included"
+    ]
+  },
+  {
+    "id": "srv-ac",
+    "title": "Air Conditioner Servicing",
+    "category": "Appliances",
+    "price": 599,
+    "duration": "90 mins",
+    "icon": "❄️",
+    "badge": "Top Rated",
+    "description": "Deep jet-pump foam wash for indoor & outdoor units, cooling gas check, and air filter sterilization.",
+    "features": [
+      "Advanced jet cleaning technology",
+      "Power consumption diagnosis",
+      "Odour and mold removal"
+    ]
+  },
+  {
+    "id": "srv-cleaning",
+    "title": "Deep Home Cleaning",
+    "category": "Cleaning",
+    "price": 899,
+    "duration": "120 mins",
+    "icon": "✨",
+    "badge": "Best Value",
+    "description": "Comprehensive kitchen scrubbing, bathroom sanitization, tile descaling, and floor machine polishing.",
+    "features": [
+      "Eco-friendly German chemicals",
+      "High-grade industrial equipment",
+      "Kills 99.9% bacteria & germs"
+    ]
+  },
+  {
+    "id": "srv-carpentry",
+    "title": "Carpentry & Furniture Assembly",
+    "category": "Carpentry",
+    "price": 449,
+    "duration": "60 mins",
+    "icon": "🪚",
+    "badge": "Standard",
+    "description": "Door lock repairs, hinge adjustments, wardrobe shelf fixes, modular furniture assembly, and wooden polish.",
+    "features": [
+      "Precision drilling & alignment",
+      "Hardware fittings check",
+      "Smooth edge finish guarantee"
+    ]
+  },
+  {
+    "id": "srv-painting",
+    "title": "Wall Touch-up & Painting",
+    "category": "Painting",
+    "price": 799,
+    "duration": "90 mins",
+    "icon": "🎨",
+    "badge": "New",
+    "description": "Damp wall repair, spot putty application, anti-fungal primer coat, and color touch-up for interior rooms.",
+    "features": [
+      "Laser color-match accuracy",
+      "Zero-drip floor mask protection",
+      "Premium low-VOC odorless paint"
+    ]
+  }
+]

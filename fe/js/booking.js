@@ -453,5 +453,16 @@ function showSuccessConfirmationModal(booking) {
   document.getElementById('confirmTechRole').textContent = `${booking.technician.role} (${booking.technician.phone})`;
   document.getElementById('confirmTotalAmount').textContent = `₹${booking.pricing.totalAmount}`;
 
+  const confirmTasksRow = document.getElementById('confirmTasksRow');
+  const confirmTasksList = document.getElementById('confirmTasksList');
+  if (confirmTasksRow && confirmTasksList) {
+    if (booking.subServices && booking.subServices.length > 0) {
+      confirmTasksList.textContent = booking.subServices.map(s => typeof s === 'object' ? s.name : s).join(', ');
+      confirmTasksRow.style.display = 'flex';
+    } else {
+      confirmTasksRow.style.display = 'none';
+    }
+  }
+
   modal.classList.add('active');
 }

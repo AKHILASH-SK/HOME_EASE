@@ -132,7 +132,10 @@ function renderTable(bookings) {
         </td>
         <td>
           <div style="font-weight: 600;">${escapeHtml(b.service?.name || 'Service')}</div>
-          <div style="font-size: 0.775rem; color: var(--text-muted);">${escapeHtml(b.service?.category || '')}</div>
+          <div style="font-size: 0.775rem; color: var(--text-muted);">
+            ${escapeHtml(b.service?.category || '')}
+            ${b.subServices && b.subServices.length > 0 ? ` • ${b.subServices.length} task${b.subServices.length > 1 ? 's' : ''}` : ''}
+          </div>
         </td>
         <td>
           <div style="font-weight: 600;">${escapeHtml(b.technician?.name || 'Assigned Specialist')}</div>
@@ -301,11 +304,29 @@ function viewReceipt(bookingId) {
   document.getElementById('receiptTechnician').textContent = `${booking.technician.name} (${booking.technician.phone})`;
   document.getElementById('receiptPayment').textContent = booking.paymentMethod;
 
+  // Included sub-services / tasks
+  const subServicesContainer = document.getElementById('receiptSubServicesContainer');
+  const subServicesList = document.getElementById('receiptSubServicesList');
+  if (subServicesContainer && subServicesList) {
+    if (booking.subServices && booking.subServices.length > 0) {
+      subServicesList.innerHTML = booking.subServices
+        .map(item => `<li>${escapeHtml(typeof item === 'object' ? item.name : item)}</li>`)
+        .join('');
+      subServicesContainer.style.display = 'block';
+    } else {
+      subServicesContainer.style.display = 'none';
+    }
+  }
+
   // Breakdown
-  document.getElementById('receiptBasePrice').textContent = `₹${booking.pricing.basePrice}`;
-  document.getElementById('receiptAddons').textContent = `₹${booking.pricing.addOnsTotal}`;
-  document.getElementById('receiptTax').textContent = `₹${booking.pricing.tax}`;
-  document.getElementById('receiptTotal').textContent = `₹${booking.pricing.totalAmount}`;
+  const repairsAndAddons = booking.pricing?.addOnsTotal !== undefined ?
+    booking.pricing.addOnsTotal :
+    ((booking.pricing?.subServicesTotal || 0) + (booking.pricing?.addOnsOnlyTotal || 0));
+
+  document.getElementById('receiptBasePrice').textContent = `₹${booking.pricing?.basePrice || 0}`;
+  document.getElementById('receiptAddons').textContent = `₹${repairsAndAddons}`;
+  document.getElementById('receiptTax').textContent = `₹${booking.pricing?.tax || 0}`;
+  document.getElementById('receiptTotal').textContent = `₹${booking.pricing?.totalAmount || 0}`;
 
   modal.classList.add('active');
 }

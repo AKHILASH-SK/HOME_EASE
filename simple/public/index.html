@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Service Appointment Booking System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="app-header">
+      <h1>🛠️ HomeEase Service Booking</h1>
+      <p>Simple Appointment Booking &amp; File-System Retrieval</p>
+    </div>
+
+    <!-- ============================== -->
+    <!-- 1. STORE / BOOK APPOINTMENT   -->
+    <!-- ============================== -->
+    <h2><span>📝</span> Book Home Service Appointment</h2>
+
+    <form id="appointmentForm" action="/save-appointment" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="appointmentId">Appointment ID</label>
+          <input
+            type="text"
+            id="appointmentId"
+            name="appointmentId"
+            placeholder="Example: APT101 or HE-501"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="customerName">Customer Name</label>
+          <input
+            type="text"
+            id="customerName"
+            name="customerName"
+            placeholder="Enter customer name"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="customerPhone">Phone Number</label>
+          <input
+            type="tel"
+            id="customerPhone"
+            name="customerPhone"
+            placeholder="10-digit mobile number"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="serviceCategory">Service Required</label>
+          <select id="serviceCategory" name="serviceCategory" required>
+            <option value="Electrical Repairs & Wiring">⚡ Electrical Repairs &amp; Wiring</option>
+            <option value="Plumbing & Drainage Solutions">🔧 Plumbing &amp; Drainage Solutions</option>
+            <option value="Air Conditioner Servicing">❄️ Air Conditioner Servicing</option>
+            <option value="Deep Home Cleaning">✨ Deep Home Cleaning</option>
+            <option value="Carpentry & Furniture Assembly">🪚 Carpentry &amp; Furniture Assembly</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="appointmentSlot">Preferred Arrival Slot</label>
+        <select id="appointmentSlot" name="appointmentSlot">
+          <option value="Today (02:00 PM - 04:00 PM)">Today (02:00 PM - 04:00 PM)</option>
+          <option value="Tomorrow (09:00 AM - 11:00 AM)">Tomorrow (09:00 AM - 11:00 AM)</option>
+          <option value="Tomorrow (11:00 AM - 01:00 PM)">Tomorrow (11:00 AM - 01:00 PM)</option>
+          <option value="Weekend (10:00 AM - 12:00 PM)">Weekend (10:00 AM - 12:00 PM)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="problemDetails">Problem Description / Service Details</label>
+        <textarea
+          id="problemDetails"
+          name="problemDetails"
+          placeholder="Describe your issue (e.g. Switchboard sparking and ceiling fan installation in hall)"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn">
+        <span>💾</span> Save Appointment
+      </button>
+
+      <!-- Save notification message -->
+      <div id="saveAlert" class="alert"></div>
+    </form>
+
+    <!-- ============================== -->
+    <!-- 2. RETRIEVE APPOINTMENT        -->
+    <!-- ============================== -->
+    <div class="retrieve-box">
+      <h2><span>🔍</span> Retrieve Appointment Details</h2>
+      <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+        Enter the Appointment ID to read the persisted record from the server.
+      </p>
+
+      <div class="retrieve-controls">
+        <input
+          type="text"
+          id="searchId"
+          placeholder="Enter Appointment ID (e.g. APT101)"
+        >
+        <button type="button" class="btn btn-secondary" onclick="getAppointment()">
+          <span>📄</span> Get Details
+        </button>
+      </div>
+
+      <!-- Result text container -->
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,5 +1,139 @@
 [
   {
+    "id": "HE-8004",
+    "createdAt": "2026-09-09T09:59:22.400Z",
+    "customer": {
+      "name": "Akhilash S",
+      "phone": "9842100801",
+      "email": "akhilash@gmail.com",
+      "address": "48 J5 New Amman Nagar\nShanthi Nagar, Mettupalayam",
+      "city": "Coimbatore",
+      "pincode": "641301"
+    },
+    "service": {
+      "id": "srv-electrical",
+      "name": "Electrical Repairs & Installation",
+      "category": "Electrical"
+    },
+    "subServices": [
+      "Switchboard & Socket Repair",
+      "Ceiling Fan / Exhaust Installation",
+      "MCB / Fuse Tripping Fix"
+    ],
+    "technician": {
+      "id": "tech-elec-1",
+      "name": "R. Suresh Kumar",
+      "phone": "+91 98421-33104",
+      "role": "Master Electrician",
+      "rating": 4.9
+    },
+    "schedule": {
+      "date": "2026-09-10",
+      "timeSlot": "02:00 PM - 04:00 PM"
+    },
+    "pricing": {
+      "basePrice": 299,
+      "subServicesTotal": 597,
+      "addOnsOnlyTotal": 0,
+      "addOnsTotal": 597,
+      "tax": 161,
+      "totalAmount": 1057
+    },
+    "paymentMethod": "Cash on Delivery",
+    "specialNotes": "",
+    "status": "Completed",
+    "updatedAt": "2026-09-09T09:59:34.454Z"
+  },
+  {
+    "id": "HE-1017",
+    "createdAt": "2026-09-08T17:01:10.204Z",
+    "customer": {
+      "name": "Akhilash S",
+      "phone": "9842100801",
+      "email": "akhilash@gmail.com",
+      "address": "48 J5 New Amman Nagar\nShanthi Nagar, Mettupalayam",
+      "city": "Coimbatore",
+      "pincode": "641301"
+    },
+    "service": {
+      "id": "srv-electrical",
+      "name": "Electrical Repairs & Installation",
+      "category": "Electrical"
+    },
+    "subServices": [
+      "Switchboard & Socket Repair",
+      "Ceiling Fan / Exhaust Installation"
+    ],
+    "technician": {
+      "id": "tech-elec-1",
+      "name": "R. Suresh Kumar",
+      "phone": "+91 98421-33104",
+      "role": "Master Electrician",
+      "rating": 4.9
+    },
+    "schedule": {
+      "date": "2026-09-11",
+      "timeSlot": "09:00 AM - 11:00 AM"
+    },
+    "pricing": {
+      "basePrice": 299,
+      "subServicesTotal": 348,
+      "addOnsOnlyTotal": 0,
+      "addOnsTotal": 348,
+      "tax": 116,
+      "totalAmount": 763
+    },
+    "paymentMethod": "Cash on Delivery",
+    "specialNotes": "",
+    "status": "Completed",
+    "updatedAt": "2026-09-08T17:01:28.896Z"
+  },
+  {
+    "id": "HE-6769",
+    "createdAt": "2026-09-08T14:18:25.035Z",
+    "customer": {
+      "name": "Akhilash S",
+      "phone": "9842100801",
+      "email": "akhilash@gmail.com",
+      "address": "48 J5 New Amman Nagar\nShanthi Nagar, Mettupalayam",
+      "city": "Coimbatore",
+      "pincode": "641301"
+    },
+    "service": {
+      "id": "srv-electrical",
+      "name": "Electrical Repairs & Installation",
+      "category": "Electrical"
+    },
+    "subServices": [
+      "Switchboard & Socket Repair",
+      "Ceiling Fan / Exhaust Installation",
+      "MCB / Fuse Tripping Fix"
+    ],
+    "technician": {
+      "id": "tech-elec-2",
+      "name": "K. Praveen",
+      "phone": "+91 97892-44219",
+      "role": "Certified Wiring Specialist",
+      "rating": 4.8
+    },
+    "schedule": {
+      "date": "2026-09-10",
+      "timeSlot": "09:00 AM - 11:00 AM"
+    },
+    "pricing": {
+      "basePrice": 299,
+      "subServicesTotal": 597,
+      "addOnsOnlyTotal": 0,
+      "addOnsTotal": 597,
+      "tax": 161,
+      "totalAmount": 1057
+    },
+    "paymentMethod": "Cash on Delivery",
+    "specialNotes": "",
+    "status": "Completed",
+    "updatedAt": "2026-09-08T14:21:13.347Z"
+  },
+  {
     "id": "HE-6181",
     "createdAt": "2026-09-06T15:04:29.352Z",
     "customer": {
@@ -79,7 +213,8 @@
     },
     "paymentMethod": "UPI / Card after Service",
     "specialNotes": "Please carry an outdoor unit ladder.",
-    "status": "Confirmed"
+    "status": "Cancelled",
+    "cancelledAt": "2026-09-08T14:18:50.367Z"
   },
   {
     "id": "HE-7945",
@@ -119,7 +254,8 @@
     },
     "paymentMethod": "Cash on Delivery",
     "specialNotes": "Main kitchen sink mixer tap is dripping constantly.",
-    "status": "In Progress"
+    "status": "Cancelled",
+    "cancelledAt": "2026-09-08T14:19:01.770Z"
   },
   {
     "id": "HE-7812",
